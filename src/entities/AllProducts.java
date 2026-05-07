@@ -9,10 +9,23 @@ public class AllProducts {
         products.add(product);
     }
 
-    public void listProducts(){
-        for(Product product:products){
-            System.out.println(product.getId() + " " + product.getName());
+    public void listProducts() {
+
+        System.out.println("==============================================");
+        System.out.printf("%-5s %-20s %-10s %-10s%n",
+                "ID", "NOME", "PREÇO", "QUANT.");
+        System.out.println("==============================================");
+
+        for (Product product : products) {
+
+            System.out.printf("%-5d %-20s R$ %-7.2f %-10d%n",
+                    product.getId(),
+                    product.getName(),
+                    product.getPrice(),
+                    product.getQuantity());
         }
+
+        System.out.println("==============================================");
     }
 
     public int generateId(){

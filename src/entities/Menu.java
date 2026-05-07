@@ -22,4 +22,27 @@ public class Menu {
             }
         }
     }
+
+    public static void buyMenu(Scanner sc, AllProducts allProducts){
+        while (true) {
+            System.out.println("Deseja comprar algum produto? (s/n)");
+            char choice = sc.next().charAt(0);
+            switch (choice){
+                case 's':
+                    System.out.println("Digite o nome do produto: ");
+                    String name = sc.nextLine();
+                    System.out.println("Digite o id do produto: ");
+                    int id = sc.nextInt();
+                    System.out.println("Digite a quantidade que você deseja comprar: ");
+                    int quantity = sc.nextInt();
+                    allProducts.buyProduct(id,name,quantity);
+                    break;
+                case 'n':
+                    System.exit(0);
+                    break;
+
+            }
+
+        }
+    }
 }

@@ -7,10 +7,11 @@ public class User {
     String password;
     String userType;
 
-    public User(String name, String password, String userType) {
+    public User(String name, String password, String userType, AllUsers users) {
         this.name = name;
         this.password = password;
         this.userType = userType;
+        users.addUser(this);
     }
 
     public String getName() {
@@ -32,7 +33,7 @@ public class User {
         return userType;
     }
 
-    public static void createUser(Scanner sc) {
+    public static void createUser(Scanner sc, AllUsers users) {
         String userType = "";
         System.out.println("Digite o nome do usuario:");
         String name = sc.nextLine();
@@ -50,6 +51,6 @@ public class User {
             System.out.println("Digite um tipo valido");
             return;
         }
-        User user = new User(name, password, userType);
+        User user = new User(name, password, userType, users);
     }
 }

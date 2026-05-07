@@ -9,9 +9,11 @@ public class Product {
     int quantity;
 
     public Product(String name, double price, int quantity){
+        AllProducts allProducts = new AllProducts();
         this.name = name;
         this.price = price;
         this.quantity = quantity;
+        allProducts.addProduct(this);
     }
 
     public String getName() {
@@ -45,5 +47,6 @@ public class Product {
         double price = sc.nextDouble();
         System.out.println("Digite a quantidade do produto: ");
         int quantity = sc.nextInt();
+
     }
 }

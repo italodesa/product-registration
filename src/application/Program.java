@@ -1,6 +1,7 @@
 package application;
 
 import entities.AllProducts;
+import entities.Menu;
 
 import java.util.Scanner;
 
@@ -8,6 +9,7 @@ public class Program {
     public static void main(String[] args){
         AllProducts products =  new AllProducts();
         Scanner sc = new Scanner(System.in);
+        Menu.mainMenu(sc,products);
 
         sc.close();
     }

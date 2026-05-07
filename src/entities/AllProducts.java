@@ -30,4 +30,14 @@ public class AllProducts {
         }
         return null;
     }
+
+    public void buyProduct(int id, String name,int quantity){
+        Product product = getProduct(id, name);
+        if (product != null && product.getQuantity() >= quantity) {
+            product.setQuantity(product.getQuantity()-quantity);
+        }
+        if (product.getQuantity() == 0) {
+            products.remove(product);
+        }
+    }
 }

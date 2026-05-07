@@ -8,4 +8,10 @@ public class AllProducts {
     public void addProduct(Product product){
         products.add(product);
     }
+
+    public void listProducts(){
+        for(Product product:products){
+            System.out.println(product);
+        }
+    }
 }

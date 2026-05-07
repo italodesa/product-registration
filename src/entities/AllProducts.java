@@ -11,7 +11,7 @@ public class AllProducts {
 
     public void listProducts(){
         for(Product product:products){
-            System.out.println(product);
+            System.out.println(product.getId() + " " + product.getName());
         }
     }
 
@@ -19,6 +19,6 @@ public class AllProducts {
         if (products.isEmpty()) {
             return 0;
         }
-        return products.size() + 1;
+        return products.size();
     }
 }

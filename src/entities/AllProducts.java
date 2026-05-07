@@ -36,7 +36,7 @@ public class AllProducts {
         if (product != null && product.getQuantity() >= quantity) {
             product.setQuantity(product.getQuantity()-quantity);
         }
-        if (product.getQuantity() == 0) {
+        if (product.getQuantity() <= 0) {
             products.remove(product);
         }
     }

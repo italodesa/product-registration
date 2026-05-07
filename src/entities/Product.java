@@ -8,12 +8,12 @@ public class Product {
     double price;
     int quantity;
 
-    public Product(String name, double price, int quantity){
+    public Product(String name, double price, int quantity, AllProducts products){
         AllProducts allProducts = new AllProducts();
         this.name = name;
         this.price = price;
         this.quantity = quantity;
-        allProducts.addProduct(this);
+        products.addProduct(this);
     }
 
     public String getName() {
@@ -40,13 +40,14 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public static void createProduct(Scanner sc){
+    public static void createProduct(Scanner sc, AllProducts allProducts){
         System.out.println("Digite o nome do produto: ");
         String name = sc.nextLine();
         System.out.println("Digite o valor do produto: ");
         double price = sc.nextDouble();
         System.out.println("Digite a quantidade do produto: ");
         int quantity = sc.nextInt();
+        Product product = new Product(name, price, quantity, allProducts);
 
     }
 }

@@ -46,4 +46,29 @@ public class Menu {
 
         }
     }
+
+    public static void loginMenu(Scanner sc, AllUsers users){
+        while (true) {
+            System.out.println("=====" + "WEB MARKET" + "=====" );
+            System.out.println("[1] Create account\n[2] login\n[3] Exit");
+            byte choice = sc.nextByte();
+            sc.nextLine();
+
+            switch(choice){
+                case 1:
+                    User.createUser(sc);
+                    break;
+                case 2:
+                    System.out.println("Digite o nome do usuario: ");
+                    String name = sc.nextLine();
+                    System.out.println("Digite a senha do usuario: ");
+                    String password = sc.nextLine();
+                    User user = users.getUser(name,password);
+                    break;
+                case 3:
+                    System.exit(0);
+            }
+
+        }
+    }
 }

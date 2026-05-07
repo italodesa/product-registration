@@ -12,7 +12,7 @@ public class Menu {
             sc.nextLine();
             switch(choice){
                 case 1:
-                    allProducts.listProducts();
+                    Menu.buyMenu(sc, allProducts);
                     break;
                 case 2:
                     Product.createProduct(sc, allProducts);
@@ -25,8 +25,10 @@ public class Menu {
 
     public static void buyMenu(Scanner sc, AllProducts allProducts){
         while (true) {
+            allProducts.listProducts();
             System.out.println("Deseja comprar algum produto? (s/n)");
             char choice = sc.next().charAt(0);
+            sc.nextLine();
             switch (choice){
                 case 's':
                     System.out.println("Digite o nome do produto: ");
@@ -38,8 +40,7 @@ public class Menu {
                     allProducts.buyProduct(id,name,quantity);
                     break;
                 case 'n':
-                    System.exit(0);
-                    break;
+                    return;
 
             }
 

@@ -21,4 +21,13 @@ public class AllProducts {
         }
         return products.size();
     }
+
+    public Product getProduct(int id,String name) {
+        for (Product p : this.products) {
+            if (p.getId() == id || p.getName() == name) {
+                return p;
+            }
+        }
+        return null;
+    }
 }

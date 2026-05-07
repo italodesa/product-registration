@@ -1,5 +1,8 @@
 package entities;
 
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class Product {
     String name;
     double price;
@@ -33,5 +36,14 @@ public class Product {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public static void createProduct(Scanner sc){
+        System.out.println("Digite o nome do produto: ");
+        String name = sc.nextLine();
+        System.out.println("Digite o valor do produto: ");
+        double price = sc.nextDouble();
+        System.out.println("Digite a quantidade do produto: ");
+        int quantity = sc.nextInt();
     }
 }

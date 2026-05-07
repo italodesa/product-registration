@@ -14,4 +14,11 @@ public class AllProducts {
             System.out.println(product);
         }
     }
+
+    public int generateId(){
+        if (products.isEmpty()) {
+            return 0;
+        }
+        return products.size() + 1;
+    }
 }

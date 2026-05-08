@@ -70,7 +70,7 @@ public class Menu {
         while (true) {
             System.out.println("=====" + "WEB MARKET" + "=====" );
             System.out.println("Bem vindo usuario " + user.getName());
-            System.out.println("[1] View products\n[2] Create product\n[3] Editar produto\n[4] Exit");
+            System.out.println("[1] View products\n[2] Create product\n[3] Editar produto\n[4] Excluir produto\n[5] Sair");
 
             byte choice = sc.nextByte();
             sc.nextLine();
@@ -85,6 +85,8 @@ public class Menu {
                     Menu.sellerEditMenu(sc,allProducts);
                     break;
                 case 4:
+                    Menu.sellerDeleteMenu(sc,allProducts);
+                case 5:
                     return;
             }
         }
@@ -133,6 +135,27 @@ public class Menu {
                 case 4:
                     return;
             }
+        }
+    }
+
+    public static void sellerDeleteMenu(Scanner sc, AllProducts allProducts){
+        System.out.println("Digite o id do produto: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Digite o nome do produto: ");
+        String name = sc.nextLine();
+        Product product = allProducts.getProduct(id,name);
+
+        if (product == null){
+            System.out.println("produto não encontrado");
+            return;
+        }
+        System.out.println("tem certeza que deseja excluir o produto "+product.getName()+"? (s/n");
+        char choice = sc.next().charAt(0);
+        sc.nextLine();
+
+        if (choice == 's'){
+            allProducts.deleteProduct(product);
         }
     }
 

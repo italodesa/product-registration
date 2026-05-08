@@ -9,6 +9,8 @@ public class AllProducts {
         products.add(product);
     }
 
+    public void deleteProduct(Product product){products.remove(product);}
+
     public void listProducts() {
 
         System.out.println("==============================================");

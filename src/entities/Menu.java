@@ -70,7 +70,7 @@ public class Menu {
         while (true) {
             System.out.println("=====" + "WEB MARKET" + "=====" );
             System.out.println("Bem vindo usuario " + user.getName());
-            System.out.println("[1] View products\n[2] Create product\n[3] Exit");
+            System.out.println("[1] View products\n[2] Create product\n[3] Editar produto\n[4] Exit");
 
             byte choice = sc.nextByte();
             sc.nextLine();
@@ -82,6 +82,55 @@ public class Menu {
                     Product.createProduct(sc, allProducts);
                     break;
                 case 3:
+                    Menu.sellerEditMenu(sc,allProducts);
+                    break;
+                case 4:
+                    return;
+            }
+        }
+    }
+
+    public static void sellerEditMenu(Scanner sc,AllProducts allProducts){
+        System.out.println("Digite o id do produto: ");
+        int id = sc.nextInt();
+        sc.nextLine();
+        System.out.println("Digite o nome do produto: ");
+        String name = sc.nextLine();
+        Product product = allProducts.getProduct(id,name);
+
+        if (product == null){
+            System.out.println("produto não encontrado");
+            return;
+        }
+
+        while (true) {
+            System.out.println("=====" + "EDIT PRODUCT" + "=====" );
+            System.out.println("produto: ");
+            System.out.println(product.getName());
+            System.out.println(product.getPrice());
+            System.out.println(product.getQuantity());
+            System.out.println();
+            System.out.println("[1] Nome\n[2] Preço\n[3] Quantidade\n[4] Sair");
+            System.out.println("Digite o que deseja editar: ");
+            byte choice = sc.nextByte();
+            sc.nextLine();
+            switch(choice){
+                case 1:
+                    System.out.println("Digite o novo nome do produto: ");
+                    String newName = sc.nextLine();
+                    product.setName(newName);
+                    break;
+                case 2:
+                    System.out.println("Digite o novo preço do produto: ");
+                    double newPrice = sc.nextDouble();
+                    product.setPrice(newPrice);
+                    break;
+                case 3:
+                    System.out.println("Digite a nova quantidade do produto: ");
+                    int newQuantity = sc.nextInt();
+                    product.setQuantity(newQuantity);
+                    break;
+                case 4:
                     return;
             }
         }

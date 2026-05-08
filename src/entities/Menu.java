@@ -25,7 +25,7 @@ public class Menu {
                     System.out.println("Digite a quantidade que você deseja comprar: ");
                     int quantity = sc.nextInt();
                     allProducts.buyProduct(id,name,quantity,user);
-                    break;
+                    return;
                 case 'n':
                     return;
 

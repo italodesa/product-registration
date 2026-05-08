@@ -70,7 +70,7 @@ public class Menu {
         while (true) {
             System.out.println("=====" + "WEB MARKET" + "=====" );
             System.out.println("Bem vindo usuario " + user.getName());
-            System.out.println("[1] View products\n[2] Create product\n[3] Editar produto\n[4] Excluir produto\n[5] Sair");
+            System.out.println("[1] View products\n[2] Create product\n[3] Editar produto\n[4] Excluir produto\n[5] Ver minhas compras\n[6] Sair");
 
             byte choice = sc.nextByte();
             sc.nextLine();
@@ -88,6 +88,9 @@ public class Menu {
                     Menu.sellerDeleteMenu(sc,allProducts);
                     break;
                 case 5:
+                    user.mySales();
+                    break;
+                case 6:
                     return;
             }
         }

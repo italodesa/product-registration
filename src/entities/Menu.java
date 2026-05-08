@@ -86,6 +86,7 @@ public class Menu {
                     break;
                 case 4:
                     Menu.sellerDeleteMenu(sc,allProducts);
+                    break;
                 case 5:
                     return;
             }

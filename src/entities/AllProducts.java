@@ -46,7 +46,11 @@ public class AllProducts {
 
     public void buyProduct(int id, String name,int quantity){
         Product product = getProduct(id, name);
-        if (product != null && product.getQuantity() >= quantity) {
+        if (product == null) {
+            System.out.println("Produto não encontrado");
+            return;
+        }
+        if (product.getQuantity() >= quantity) {
             product.setQuantity(product.getQuantity()-quantity);
         }
         if (product.getQuantity() <= 0) {

@@ -46,7 +46,7 @@ public class AllProducts {
         return null;
     }
 
-    public void buyProduct(int id, String name,int quantity){
+    public void buyProduct(int id, String name,int quantity, User user){
         Product product = getProduct(id, name);
         if (product == null) {
             System.out.println("Produto não encontrado");
@@ -54,6 +54,7 @@ public class AllProducts {
         }
         if (product.getQuantity() >= quantity) {
             product.setQuantity(product.getQuantity()-quantity);
+            user.addSale(product,quantity);
         }
         if (product.getQuantity() <= 0) {
             products.remove(product);

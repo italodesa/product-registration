@@ -1,11 +1,13 @@
 package entities;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class User {
     String name;
     String password;
     String userType;
+    ArrayList<Sale> sales = new ArrayList<Sale>();
 
     public User(String name, String password, String userType, AllUsers users) {
         this.name = name;
@@ -33,6 +35,10 @@ public class User {
         return userType;
     }
 
+    public ArrayList<Sale> getSales() {
+        return sales;
+    }
+
     public static void createUser(Scanner sc, AllUsers users) {
         String userType = "";
         System.out.println("Digite o nome do usuario:");
@@ -52,5 +58,36 @@ public class User {
             return;
         }
         User user = new User(name, password, userType, users);
+    }
+
+    public void addSale(Product product, int quantity) {
+        getSales().add(new Sale(product,quantity));
+    }
+
+    public void mySales(){
+
+        System.out.printf(
+                "%-12s %-20s %-12s %-10s %-12s%n",
+                "DATA",
+                "PRODUTO",
+                "PREÇO",
+                "QTD",
+                "TOTAL"
+        );
+
+        System.out.println(
+                "------------------------------------------------------------------"
+        );
+
+        for(Sale sale : getSales()){
+            System.out.printf(
+                    "%-12s %-20s R$ %-9.2f %-10d R$ %-10.2f%n",
+                    sale.date,
+                    sale.productName,
+                    sale.productPrice,
+                    sale.quantity,
+                    sale.salePrice
+            );
+        }
     }
 }

@@ -9,11 +9,11 @@ public class Sale {
     int quantity;
     double salePrice;
 
-    public Sale(Product product) {
+    public Sale(Product product,int quantity) {
         this.date = LocalDate.now();
         this.productName = product.getName();
         this.productPrice = product.getPrice();
-        this.quantity = product.getQuantity();
-        this.salePrice = product.getPrice() * product.getQuantity();
+        this.quantity = quantity;
+        this.salePrice = product.getPrice() * quantity;
     }
 }

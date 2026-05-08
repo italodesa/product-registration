@@ -10,7 +10,7 @@ public class Menu {
         }
     }
 
-    public static void buyMenu(Scanner sc, AllProducts allProducts){
+    public static void buyMenu(Scanner sc, AllProducts allProducts, User user){
         while (true) {
             allProducts.listProducts();
             System.out.println("Deseja comprar algum produto? (s/n)");
@@ -24,7 +24,7 @@ public class Menu {
                     int id = sc.nextInt();
                     System.out.println("Digite a quantidade que você deseja comprar: ");
                     int quantity = sc.nextInt();
-                    allProducts.buyProduct(id,name,quantity);
+                    allProducts.buyProduct(id,name,quantity,user);
                     break;
                 case 'n':
                     return;
@@ -76,7 +76,7 @@ public class Menu {
             sc.nextLine();
             switch(choice) {
                 case 1:
-                    Menu.buyMenu(sc, allProducts);
+                    Menu.buyMenu(sc, allProducts,user);
                     break;
                 case 2:
                     Product.createProduct(sc, allProducts);
@@ -164,15 +164,18 @@ public class Menu {
         while (true) {
             System.out.println("=====" + "WEB MARKET" + "=====" );
             System.out.println("Bem vindo usuario " + user.getName());
-            System.out.println("[1] View products\n[2] Exit");
+            System.out.println("[1] View products\n[2] Ver minhas compras\n[3] Sair");
 
             byte choice = sc.nextByte();
             sc.nextLine();
             switch(choice) {
                 case 1:
-                    Menu.buyMenu(sc, allProducts);
+                    Menu.buyMenu(sc, allProducts,user);
                     break;
                 case 2:
+                    user.mySales();
+                    break;
+                case 3:
                     return;
             }
         }

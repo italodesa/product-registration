@@ -47,16 +47,16 @@ public class Menu {
         }
     }
 
-    public static void loginMenu(Scanner sc, AllUsers users){
+    public static void loginMenu(Scanner sc, AllUsers users, AllProducts allProducts){
         while (true) {
             System.out.println("=====" + "WEB MARKET" + "=====" );
-            System.out.println("[1] Create account\n[2] login\n[3] Exit");
+            System.out.println("[1] Create account\n[2] Login\n[3] Exit");
             byte choice = sc.nextByte();
             sc.nextLine();
 
             switch(choice){
                 case 1:
-                    User.createUser(sc);
+                    User.createUser(sc,users);
                     break;
                 case 2:
                     System.out.println("Digite o nome do usuario: ");
@@ -64,11 +64,57 @@ public class Menu {
                     System.out.println("Digite a senha do usuario: ");
                     String password = sc.nextLine();
                     User user = users.getUser(name,password);
+                    if (user != null){
+                        if (user.getUserType() == "seller"){
+                            Menu.sellerMenu(sc,user,allProducts);
+                        } else if (user.getUserType() == "client"){
+                            Menu.clientMenu(sc,user,allProducts);
+                        }
+                    }
                     break;
                 case 3:
                     System.exit(0);
             }
 
+        }
+    }
+
+    public static void sellerMenu(Scanner sc, User user, AllProducts allProducts){
+        while (true) {
+            System.out.println("=====" + "WEB MARKET" + "=====" );
+            System.out.println("Bem vindo usuario " + user.getName());
+            System.out.println("[1] View products\n[2] Create product\n[3] Exit");
+
+            byte choice = sc.nextByte();
+            sc.nextLine();
+            switch(choice) {
+                case 1:
+                    Menu.buyMenu(sc, allProducts);
+                    break;
+                case 2:
+                    Product.createProduct(sc, allProducts);
+                    break;
+                case 3:
+                    return;
+            }
+        }
+    }
+
+    public static void clientMenu(Scanner sc,User user, AllProducts allProducts){
+        while (true) {
+            System.out.println("=====" + "WEB MARKET" + "=====" );
+            System.out.println("Bem vindo usuario " + user.getName());
+            System.out.println("[1] View products\n[2] Exit");
+
+            byte choice = sc.nextByte();
+            sc.nextLine();
+            switch(choice) {
+                case 1:
+                    Menu.buyMenu(sc, allProducts);
+                    break;
+                case 2:
+                    return;
+            }
         }
     }
 }

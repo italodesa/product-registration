@@ -44,9 +44,9 @@ public class User {
         int choice = sc.nextInt();
 
         if (choice == 1) {
-            userType = "seller";
-        } else if (choice == 2) {
             userType = "client";
+        } else if (choice == 2) {
+            userType = "seller";
         } else {
             System.out.println("Digite um tipo valido");
             return;

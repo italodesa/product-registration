@@ -4,22 +4,9 @@ import java.util.Scanner;
 
 public class Menu {
 
-    public static void mainMenu(Scanner sc, AllProducts allProducts) {
+    public static void mainMenu(Scanner sc, AllUsers users, AllProducts allProducts) {
         while (true) {
-            System.out.println("=====" + "WEB MARKET" + "=====" );
-            System.out.println("[1] View products\n[2] Create product\n[3] Exit");
-            byte choice = sc.nextByte();
-            sc.nextLine();
-            switch(choice){
-                case 1:
-                    Menu.buyMenu(sc, allProducts);
-                    break;
-                case 2:
-                    Product.createProduct(sc, allProducts);
-                    break;
-                case 3:
-                    System.exit(0);
-            }
+            Menu.loginMenu(sc,users,allProducts);
         }
     }
 

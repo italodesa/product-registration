@@ -11,7 +11,7 @@ public class Program {
         AllProducts products =  new AllProducts();
         AllUsers users = new AllUsers();
         Scanner sc = new Scanner(System.in);
-        Menu.mainMenu(sc,products);
+        Menu.mainMenu(sc,users,products);
 
         sc.close();
     }
